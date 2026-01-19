@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Bday My Gf akuuuu!!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Import map for ESM libraries -->
+  <script type="importmap">
+  {
+    "imports": {
+      "gsap": "https://esm.sh/gsap@3.12.5"
+    }
+  }
+  </script>
+  <script type="module" src="main.js" defer></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Global floating decorations -->
+    <div class="floating-decos">
+      <span class="deco deco-heart"></span>
+      <span class="deco deco-star"></span>
+      <span class="deco deco-circle"></span>
+      <span class="deco deco-heart"></span>
+      <span class="deco deco-star"></span>
+      <span class="deco deco-circle"></span>
+    </div>
+
+    <!-- Background music (can be replaced with your own mp3 file) -->
+    <audio id="bg-music" loop>
+      <source src="Apocalypse - Cigarettes After Sex.mp3" type="audio/mpeg" />
+    </audio>
+    <button id="music-toggle" class="music-toggle" aria-label="Toggle music">
+      ♪
+    </button>
+
+    <!-- Pages -->
+    <!-- 1. HOME PAGE -->
+    <section id="page-home" class="page active">
+      <div class="card card-home">
+        <div class="home-header">
+          <h1>HAPPY BDAY ALDIEE!!</h1>
+          <div class="sparkles">
+            <span class="sparkle s1"></span>
+            <span class="sparkle s2"></span>
+            <span class="sparkle s3"></span>
+            <span class="sparkle s4"></span>
+          </div>
+        </div>
+        <p class="home-message">
+          hii baby, akh tadinya mau ngasih kamu hadiah tapi malah ilang :(
+          mau bantu cariin gk?
+        </p>
+        <div class="home-buttons">
+          <button id="btn-home-yes" class="btn primary">
+            yes
+          </button>
+          <button class="btn secondary btn-no" disabled>
+            no
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. STORY GAME PAGE -->
+    <section id="page-story" class="page">
+      <div class="card card-story">
+        <header class="story-header">
+          <h2>find aldiee’s Lost Birthday Gift!</h2>
+          <p class="story-intro">
+            aku gk sengaja ngilangin hadiah kamu di website ini karena
+            kamu cantiknya bikin salting 😔 bantu cariin yahhh? mau yahh pliss?
+          </p>
+        </header>
+
+        <div class="story-scene-indicator">
+          <span class="scene-dot active" data-scene="0"></span>
+          <span class="scene-dot" data-scene="1"></span>
+          <span class="scene-dot" data-scene="2"></span>
+          <span class="scene-dot" data-scene="3"></span>
+        </div>
+
+        <div class="story-scene-container">
+          <!-- Scene 1: Cozy Bedroom -->
+          <div class="scene scene-active" data-scene="0">
+            <h3>Kamar Tidur</h3>
+            <p class="scene-caption">
+              ada disini gak ya kira-kira?🤔
+            </p>
+            <div class="scene-art bedroom">
+              <div class="bed clickable" data-item="pillow">
+                <span class="label">bantal 🛏️</span>
+              </div>
+              <div class="desk clickable" data-item="desk">
+                <span class="label">laci meja 📁</span>
+              </div>
+              <div class="plant clickable" data-item="plant">
+                <span class="label">bunga 🌱</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scene 2: Garden -->
+          <div class="scene" data-scene="1">
+            <h3>Teras Rumah</h3>
+            <p class="scene-caption">
+              okiee keknya ilang diluar deh waktu ngehaluin kamu....
+            </p>
+            <div class="scene-art garden">
+              <div class="flower flower-left clickable" data-item="flower-left">
+                <span class="label">bunga mawar 🌸</span>
+              </div>
+              <div class="flower flower-right clickable" data-item="flower-right">
+                <span class="label">bunga melati 🌼</span>
+              </div>
+              <div class="butterfly butterfly-1 clickable" data-item="butterfly-1"></div>
+              <div class="butterfly butterfly-2 clickable" data-item="butterfly-2"></div>
+            </div>
+          </div>
+
+          <!-- Scene 3: Starry Path -->
+          <div class="scene" data-scene="2">
+            <h3>Langit dan Bintang</h3>
+            <p class="scene-caption">
+              mungkin langit tau dimana hadiahnya… mereka kan selalu ngawasin kita ✨
+            </p>
+            <div class="scene-art starry">
+              <div class="star clickable" data-item="star-1"></div>
+              <div class="star clickable" data-item="star-2"></div>
+              <div class="star clickable" data-item="star-3"></div>
+              <div class="star clickable" data-item="star-4"></div>
+            </div>
+          </div>
+
+          <!-- Scene 4: Treasure Corner -->
+          <div class="scene" data-scene="3">
+            <h3>Ruang Rahasia</h3>
+            <p class="scene-caption">
+              wait… apa jangan-jangan kutaro di tempat spesial terus kelupaan ya 😭
+            </p>
+            <div class="scene-art treasure">
+              <div class="chest clickable" data-item="chest">
+                <span class="label">mystery box 🎁</span>
+              </div>
+              <div class="pile clickable" data-item="pile">
+                <span class="label">barang gk penting 🧸</span>
+              </div>
+              <div class="bow clickable" data-item="bow">
+                <span class="label">pita ucul 🎀</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-dialogue" id="story-dialogue">
+          <p class="dialogue-text"></p>
+        </div>
+
+        <div class="story-footer">
+          <button id="btn-story-prev" class="btn ghost">back</button>
+          <button id="btn-story-next" class="btn primary">next</button>
+        </div>
+      </div>
+
+      <!-- Found gift modal -->
+      <div id="gift-modal" class="modal">
+        <div class="modal-content">
+          <h3>Yeay! Ketemuuuu!</h3>
+          <p class="modal-text">
+            thats my good girl :>> mungkin tadi hadiah nya ilang, tapi ak gk bakal biarin km ilang ;)
+          </p>
+          <button id="btn-gift-continue" class="btn primary">
+            continue
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SCRAPBOOK PAGE -->
+    <section id="page-scrapbook" class="page">
+      <div class="card card-scrapbook">
+        <div class="scrapbook-wrapper">
+          <div class="scrapbook-book">
+            <div class="scrapbook-page scrapbook-page-front scrapbook-page-active">
+              <header class="scrapbook-header">
+                <h2>our chaotic yet cute memories</h2>
+              </header>
+
+              <div class="scrapbook-content">
+                <div class="polaroids">
+                  <div class="polaroid">
+                    <label class="polaroid-photo">
+                      <input type="file" accept="image/*" class="photo-input" />
+                      <span class="photo-placeholder" style="display:none">tap to add us ✿</span>
+                      <img class="photo-img" alt="jechu" src="jechu.jpeg" style="display:block" />
+                    </label>
+                    <textarea class="polaroid-caption" spellcheck="false" readonly tabindex="-1">our first fav memory ♡</textarea>
+                  </div>
+
+                  <div class="polaroid">
+                    <label class="polaroid-photo">
+                      <input type="file" accept="image/*" class="photo-input" />
+                      <span class="photo-placeholder" style="display:none">tap to add us ✿</span>
+                      <img class="photo-img" alt="jechu couple" src="jechu 2 (1).jpeg" style="display:block" />
+                    </label>
+                    <textarea class="polaroid-caption" spellcheck="false" readonly tabindex="-1">us being stupid (lovingly)</textarea>
+                  </div>
+                </div>
+
+                <div class="timeline">
+                  <h3 class="timeline-title">little timeline</h3>
+                  <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <textarea class="timeline-text" spellcheck="false" readonly tabindex="-1">when it all started:
+keknya aku bakal bohong kalo aku bilang aku awalnya takut, dari awal kita chat trus aku ngelawak trus km janji bakal ngucapin selamat malam tiap hari. 
+aku gak tau harus gimana soalnya udah setahun semenjak aku gk pacaran. pertama kamu kirim pap aku kegirangan salting loncat-loncat di kasur tau wkwkwk</textarea>
+                  </div>
+                  <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <textarea class="timeline-text" spellcheck="false" readonly tabindex="-1">OUR FIRST DATEEE??!!!
+aku awalnya iseng nanya soalnya aku baru gajian waktu itu. pas kamu bilang mau, aku excited banget sampe teriak terus dimarahin mamah wkwkwk. 
+maaf yahh au telat waktu itu, aku di jalan udah takut banget kamu bakal ilfeel trus marah sama aku. inget gk waktu gk sengaja masuk cafe batvia versi elit trus kita berdua melotot liat harganya? wkwkw aku masih gk enak sama mbak-mbaknya. 
+waktu itu kamu cantik banget tau, kalo kamu penasaran knp waktu first date aku gk banyak ngomong ya karena kamu ihhh</textarea>
+                  </div>
+                  <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <textarea class="timeline-text" spellcheck="false" readonly tabindex="-1">waktu jauh dari kamu :( :
+aku benci banget sama diriku karena gk bisa nemenin kamu, aku iri karena couple lain termasuk temen-temenku bisa ketemu pacarnya tiap hari (malu2in iya maap efek setahun single) 
+bahkan waktu nulis in pun, aku kangen banget sama kamu sampe aku mau manjat gunung semeru trus teriak "ALDIEE KEMBALILAH KE PELUKANKU" trus gelinding kebawah beli jagung bakar.
+mungkin hal-hal yg kaya gini yg bikin aku sadar seberapa cinta aku sama kamu, my love ❤️ </textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scrapbook-doodles">
+                <span class="doodle heart"></span>
+                <span class="doodle star"></span>
+                <span class="doodle tape tape-top"></span>
+                <span class="doodle tape tape-bottom"></span>
+              </div>
+            </div>
+
+            <div class="scrapbook-page scrapbook-page-back">
+              <div class="scrapbook-content back-content">
+                <h3 class="back-title">more chaos, more love</h3>
+                <div class="notes-grid">
+                  <textarea class="note" spellcheck="false" readonly tabindex="-1">things i love about u
+      
+- kalo kamu yapping ttg make-up
+- nyuapin kamu makann
+- kalo km iseng mention beda tinggi badan kita (iya aku tau aku pendekk😭)
+- i love that u are kind to me despite kekurangan ku
+
+basically i love EVERYTHING ABOUT UUUUUU</textarea>
+
+                  <textarea class="note" spellcheck="false" readonly tabindex="-1">inside jokes yg cuma kita ngerti:
+
+- arie = bahlil Jr
+- "prabowo kan bapak kamu"
+- "bagai langit & bumi"
+- "pilates itu senam ibu-ibu"
+- calling me antek rezim is insane btw</textarea>
+
+                  <textarea class="note" spellcheck="false" readonly tabindex="-1">songs that remind me of u
+                 
+1. pretty boy- tnbhd
+2. this december- ricky montgomery
+3. bargad - arpit bala (OFC)
+4. heavy- the marias
+5. best friend- rex orange county.
+
+and honestly ANY cigs after sex song.</textarea>
+
+                  <textarea class="note" spellcheck="false" readonly tabindex="-1">future plans w u that make my heart go !!! 💗
+        
+1. PERPUS DATEEEE!!!
+2. pilates/gym bareng
+3. sunset ancol sama kamu
+4. photo studio berdua
+5. anywhere with you honestly ;) [palingan ke blok-m lagi anyways]</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button id="btn-scrapbook-flip" class="btn ghost scrapbook-flip">
+            flip page
+          </button>
+        </div>
+
+        <div class="scrapbook-footer">
+          <button id="btn-scrapbook-next" class="btn primary">continue</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. FINAL MESSAGE PAGE -->
+    <section id="page-final" class="page">
+      <div class="card card-final">
+        <div class="final-stars">
+          <span class="final-star"></span>
+          <span class="final-star"></span>
+          <span class="final-star"></span>
+          <span class="final-star"></span>
+          <span class="final-star"></span>
+        </div>
+
+        <div class="final-message">
+          <h2>happy bday si kocakk :))</h2>
+          <p>
+            kalo kamu baca ini berarti aku berhasil nguber waktu abis kerja buat bikin website ini hehe
+            youre finally 20 (ihhh tuaaa),
+          </p>
+          <p>
+            i love everything that we have shared selama kita pacaran 3 bulanan ini, and honestly
+            aku bakal tetep ada di sisi kamu apapun yg terjadi. aku janji bakal dukung kamu 
+            sampe masuk miss universe or jalan di paris fashion week, and ill be ur #1 supporter :>
+          </p>
+          <p>
+            i love everything about you, and i wish aku sama km sekarang. maaf ya aku 
+            cuma bisa begini, plis maafin yaww, my love :3
+          </p>
+          <p>
+            I wish u nothing but success and happiness, and i know youre meant for great things
+            (mangkanya jangan dikit-dikit netflix).
+          </p>
+          <p>
+            I LOVE YOU sweetheart MMWAH 🥰💕💕 i hope u have the best day ever today
+            (if not im always here to make it better ;) )
+          </p>
+
+          <img src="baby.jpeg" alt="us" class="final-photo" />
+
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
